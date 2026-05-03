@@ -1,4 +1,4 @@
-#load nuget:?package=Cake.Recipe&version=1.1.2
+#load nuget:?package=Cake.Recipe&version=4.0.0
 
 Environment.SetVariableNames();
 
@@ -10,15 +10,10 @@ BuildParameters.SetParameters(context: Context,
                             repositoryOwner: "cake-contrib",
                             repositoryName: "Cake.Kudu",
                             appVeyorAccountName: "cakecontrib",
-                            shouldRunDupFinder: false,
                             shouldRunInspectCode: false,
-                            shouldRunGitVersion: true);
+                            shouldRunGitVersion: true,
+                            preferredBuildProviderType: BuildProviderType.GitHubActions);
 
 BuildParameters.PrintParameters(Context);
-
-ToolSettings.SetToolSettings(context: Context,
-                            dupFinderExcludePattern: new string[] {
-                                BuildParameters.RootDirectoryPath + "/src/Cake.Kudu/**/*.AssemblyInfo.cs",
-                                BuildParameters.RootDirectoryPath + "/src/Cake.Kudu/LitJson/**/*.cs" });
 
 Build.RunDotNetCore();
