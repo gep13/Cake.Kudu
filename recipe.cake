@@ -10,11 +10,16 @@ BuildParameters.SetParameters(context: Context,
                             repositoryOwner: "cake-contrib",
                             repositoryName: "Cake.Kudu",
                             appVeyorAccountName: "cakecontrib",
-                            shouldRunDotNetCorePack: true,
+                            shouldRunDotNetCorePack: false,
                             shouldRunInspectCode: false,
                             shouldGenerateDocumentation: false,
                             preferredBuildProviderType: BuildProviderType.GitHubActions);
 
 BuildParameters.PrintParameters(Context);
+
+ToolSettings.SetToolSettings(context: Context,
+                            testCoverageFilter: "+[*]* -[xunit.*]* -[Cake.Core]* -[Cake.Testing]* -[*.Tests]*",
+                            testCoverageExcludeByAttribute: "*.ExcludeFromCodeCoverage*",
+                            testCoverageExcludeByFile: "*/*Designer.cs;*/*.g.cs;*/*.g.i.cs");
 
 Build.RunDotNetCore();
