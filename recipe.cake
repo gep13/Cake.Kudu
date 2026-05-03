@@ -11,7 +11,6 @@ BuildParameters.SetParameters(context: Context,
                             repositoryName: "Cake.Kudu",
                             appVeyorAccountName: "cakecontrib",
                             shouldRunInspectCode: false,
-                            shouldRunGitVersion: true,
                             preferredBuildProviderType: BuildProviderType.GitHubActions);
 
 BuildParameters.PrintParameters(Context);
