@@ -10,7 +10,9 @@ BuildParameters.SetParameters(context: Context,
                             repositoryOwner: "cake-contrib",
                             repositoryName: "Cake.Kudu",
                             appVeyorAccountName: "cakecontrib",
+                            shouldRunDotNetCorePack: true,
                             shouldRunInspectCode: false,
+                            shouldGenerateDocumentation: false,
                             preferredBuildProviderType: BuildProviderType.GitHubActions);
 
 BuildParameters.PrintParameters(Context);
